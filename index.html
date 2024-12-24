@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persona Pro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .persona-section {
+            margin-bottom: 20px;
+        }
+        .persona-section h3 {
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .save-share {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Persona Pro</h1>
+    <p>Create detailed personas effortlessly</p>
+</header>
+
+<div class="container">
+    <!-- Step 1: Choose Persona Type -->
+    <div id="choose-type">
+        <h2>Create a Persona</h2>
+        <button class="button" onclick="showForm('individual')">Create Persona for an Individual</button>
+        <button class="button" onclick="showForm('job')">Create Persona for a Job</button>
+    </div>
+
+    <!-- Step 2: Input Form -->
+    <div id="form-individual" style="display:none;">
+        <h2>Individual Persona</h2>
+        <div class="form-group">
+            <label for="individual-name">Name (optional)</label>
+            <input type="text" id="individual-name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="career-interests">Career Interests</label>
+            <input type="text" id="career-interests" placeholder="E.g., Software Development, Marketing">
+        </div>
+        <div class="form-group">
+            <label for="hobbies">Hobbies/Passions</label>
+            <input type="text" id="hobbies" placeholder="E.g., Reading, Traveling">
+        </div>
+        <button class="button" onclick="generatePersona()">Generate Persona</button>
+    </div>
+
+    <div id="form-job" style="display:none;">
+        <h2>Job Persona</h2>
+        <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" placeholder="E.g., Data Scientist">
+        </div>
+        <div class="form-group">
+            <label for="skills">Required Skills</label>
+            <input type="text" id="skills" placeholder="E.g., Python, Machine Learning">
+        </div>
+        <div class="form-group">
+            <label for="company-values">Company Values</label>
+            <textarea id="company-values" placeholder="E.g., Innovation, Customer-first"></textarea>
+        </div>
+        <button class="button" onclick="generatePersona()">Generate Persona</button>
+    </div>
+
+    <!-- Step 3: Generated Persona -->
+    <div id="persona-result" style="display:none;">
+        <h2>Generated Persona</h2>
+        <div class="persona-section">
+            <h3>Description</h3>
+            <p id="description"></p>
+        </div>
+        <div class="persona-section">
+            <h3>Goals</h3>
+            <p id="goals"></p>
+        </div>
+        <div class="persona-section">
+            <h3>Needs</h3>
+            <p id="needs"></p>
+        </div>
+        <div class="persona-section">
+            <h3>Pain Points</h3>
+            <p id="pain-points"></p>
+        </div>
+        <div class="persona-section">
+            <h3>Traits</h3>
+            <p id="traits"></p>
+        </div>
+        <div class="save-share">
+            <button class="button">Save</button>
+            <button class="button">Share</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showForm(type) {
+        document.getElementById("choose-type").style.display = "none";
+        if (type === "individual") {
+            document.getElementById("form-individual").style.display = "block";
+        } else {
+            document.getElementById("form-job").style.display = "block";
+        }
+    }
+
+    function generatePersona() {
+        document.getElementById("form-individual").style.display = "none";
+        document.getElementById("form-job").style.display = "none";
+        document.getElementById("persona-result").style.display = "block";
+        
+        // Mock persona details
+        document.getElementById("description").innerText = "This is a dynamic and professional persona.";
+        document.getElementById("goals").innerText = "Achieve excellence in software development.";
+        document.getElementById("needs").innerText = "Access to cutting-edge tools and training.";
+        document.getElementById("pain-points").innerText = "Struggles with outdated processes.";
+        document.getElementById("traits").innerText = "Creative, Analytical, Detail-oriented.";
+    }
+</script>
+
+</body>
+</html>
